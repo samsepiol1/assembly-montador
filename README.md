@@ -54,3 +54,40 @@ _start:
 ```
 
 Ao repassar esse código para o GAS ele transforma o arquivo .s(extensão usada por convenção) em um objeto do tipo .O
+
+## Natureza do Montador
+
+A posição do código assembly para o montador é de poucoa importancia. Na verdade o montador deve ser capaz manipular as representações simbolicas antes mesmo que sejam definidas. Considere o seguinte exemplo de codigo:
+
+```asm
+START ADD.L D0,D1
+      JMP   NEXT
+LOOP ADD.L  #1,D1
+NEXT CLR.L  D5
+     JMP   LOOP
+```
+
+Na linha 2, por exemplo, há uma referencia a um simbolo NEXT, cujo valor ainda não havia sido determinado. A definição só vai acontecer na linha 4. Há duas possibilidade de lidar com referencias futuras. A primeira possibilidade é deixar uma lacuna para onde deveria ser a definição e apenas no fim do programa identificar se essa lacuna vai ser preenchida ou não. Com essa estrategia é possivel fazer uma única leitura no arquivo no fim das contas. 
+
+O outro processo consiste em, basicamente, fazer o processo de montagem em dois passos:
+
+(1)
+ler o arquivo objeto -> criar uma tabela de símbolos definada com todas as constantes que foram declaradas no código.
+
+(2)
+uma nova leitura sobre o arquivo é feita para gerar o código de máquina -> a tabela é usada para identificar se não foi feita nenhuma alteração. 
+
+## Pseudo-Instruções e definições associadas ao código
+
+As pseudo-instruções estabelecem conexões entre referencias simbolicas e valores a serem efetivamente referenciados. cada montador oferece um conjunto de pseudo-instruções diferenciados que faciltiam essas conexões. A seguir um trecho de pseudo instrução:
+
+```asm
+SIZE EQU 100
+```
+esse trecho associa o valor decimal 100 ao símbolo SIZE que pode ser posteriomente referenciado em outras instruções como em:
+
+```asm
+MOVE #SIZE, D0
+```
+
+## Constantes e Váriaveis Inicializadas
