@@ -10,6 +10,8 @@ entrada(arquivo texto + código-fonte em assembly) -> saida = arquivo binario co
 
 No exemplo abaixo vamos introduzir um código que é preparado para ser lido por um montador
 
+
+### Exemplo de código preparado para um assembler com instruções apontando para registradores do processador da familia 6800
 ```asm
 
 POS DS.W 1
