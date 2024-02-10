@@ -41,3 +41,16 @@ O terceiro campo é o campo dos operandos que podem fazer referências a registr
 GNU Assembler, também conhecido como GAS, é um montador de código assembly desenvolvido como parte do projeto GNU, um esforço colaborativo para criar um sistema operacional totalmente livre e de código aberto, conhecido como GNU. O GNU Assembler é uma parte essencial das ferramentas de desenvolvimento de software disponibilizadas pelo projeto GNU.
 
 O GAS é projetado para funcionar em sistemas operacionais compatíveis com UNIX e é capaz de montar código assembly para uma variedade de arquiteturas de processador, incluindo, mas não se limitando a, x86, ARM, MIPS e PowerPC. Ele suporta várias convenções de sintaxe, incluindo a sintaxe AT&T (usada principalmente no UNIX) e a sintaxe Intel (usada principalmente no DOS e Windows).
+
+Abaixo um exemplo de código escrito na sintaxe  AT&T
+
+```asm
+.globl _start
+.text
+_start:
+    mov $60, %RAX
+    xor %rdi, %rdi
+    syscall
+```
+
+Ao repassar esse código para o GAS ele transforma o arquivo .s(extensão usada por convenção) em um objeto do tipo .O
