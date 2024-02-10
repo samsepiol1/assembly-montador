@@ -35,3 +35,9 @@ Cada Linha desse programa pode conter instruções em seus comentários(Represen
 A segunda coluna contém o campo de operação que representa a instrução que será montada: as instruções podem ser tanto instruções de máquinas como MOVE e RTS ou pseudo-instruções como DS Os sufixos pos instrução representa os tipos de dados e, respectivamente, o tamanho dos operandos. .B(Byte), .W(Word), .L(Long Word). 1,2,4 Bytes, respectvamente. 
 
 O terceiro campo é o campo dos operandos que podem fazer referências a registradores dos processadores A0 a A7
+
+## GAS - GNU Assembler
+
+GNU Assembler, também conhecido como GAS, é um montador de código assembly desenvolvido como parte do projeto GNU, um esforço colaborativo para criar um sistema operacional totalmente livre e de código aberto, conhecido como GNU. O GNU Assembler é uma parte essencial das ferramentas de desenvolvimento de software disponibilizadas pelo projeto GNU.
+
+O GAS é projetado para funcionar em sistemas operacionais compatíveis com UNIX e é capaz de montar código assembly para uma variedade de arquiteturas de processador, incluindo, mas não se limitando a, x86, ARM, MIPS e PowerPC. Ele suporta várias convenções de sintaxe, incluindo a sintaxe AT&T (usada principalmente no UNIX) e a sintaxe Intel (usada principalmente no DOS e Windows).
